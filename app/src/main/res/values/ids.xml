@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="buttonPostComment" type="id" />
+    <item name="fieldCommentText" type="id" />
+    <item name="postTextLayout" type="id" />
+    <item name="recyclerPostComments" type="id" />
+</resources>
