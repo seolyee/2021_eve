@@ -38,7 +38,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         //Glide.with(holder.itemView).load(arrayList.get(position).uid).into(holder.iv_profile);
         Glide.with(holder.itemView).load(arrayList.get(position).image_path).into(holder.iv_image); //글 이미지
         holder.tv_date.setText(arrayList.get(position).date); //제목
-        holder.tv_author.setText(String.valueOf(arrayList.get(position).author)); //글 작성자
+        //holder.tv_author.setText(String.valueOf(arrayList.get(position).author)); //글 작성자
         holder.tv_title.setText(arrayList.get(position).title); //제목
         holder.tv_content.setText(String.valueOf(arrayList.get(position).content)); //내용 일부
 

@@ -18,8 +18,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.HelluApp.Community.users_model;
-import com.example.HelluApp.MainFragment.fragment_mypage;
 import com.example.HelluApp.User;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.example.HelluApp.R;
@@ -93,7 +91,6 @@ public class MypageChange extends AppCompatActivity {
                     Toast.makeText(MypageChange.this, "변경할 닉네임을 입력하세요", Toast.LENGTH_SHORT).show();
                 } else {
                     String change_nickname = nickname_text.getText().toString();
-
                     DatabaseReference usersRef = rDatabase.child(Uid);
                     Map<String, Object> nickUpdates = new HashMap<>();
                     nickUpdates.put("Nickname", change_nickname);

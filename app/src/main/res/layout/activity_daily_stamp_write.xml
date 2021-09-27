@@ -54,7 +54,7 @@
         android:id="@+id/daily_write_kcal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="오늘 먹은 칼로리를 입력하세요"
+        android:hint="먹은 칼로리를 입력하세요"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear" />
 

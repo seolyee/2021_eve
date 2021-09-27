@@ -35,7 +35,7 @@ public class fragment_feed extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
-       ActionBar actionBar=getActivity().getActionBar();
+        ActionBar actionBar = getActivity().getActionBar();
         //actionBar = requireActivity().getActionBar();
         //actionBar.setDisplayShowTitleEnabled(false);
         FloatingActionButton imageButton = view.findViewById(R.id.fab);
@@ -62,28 +62,24 @@ public class fragment_feed extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
-                Log.d("feed", "선택된 탭: "+position);
+                Log.d("feed", "선택된 탭: " + position);
                 Fragment selected = null;
-                if(position ==0){
+                if (position == 0) {
                     selected = fragment_recent;
-                }else if(position == 1){
+                } else if (position == 1) {
                     selected = fragment_mypost;
-                }else if(position==2){
+                } else if (position == 2) {
                     selected = fragment_mytoppost;
                 }
-
                 getFragmentManager().beginTransaction().replace(R.id.container_in_feed, selected).commit();
-
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
 

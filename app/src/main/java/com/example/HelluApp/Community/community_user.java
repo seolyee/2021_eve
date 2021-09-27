@@ -1,6 +1,9 @@
 package com.example.HelluApp.Community;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -24,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +40,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 //친구목록.java
 
@@ -72,15 +77,18 @@ public class community_user extends Fragment {
         public CommunityUsersRecyclerViewAdapter(){
             users_models = new ArrayList<>();
             FirebaseDatabase.getInstance().getReference("User").addValueEventListener(new ValueEventListener() {
+                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                 @SuppressLint("NotifyDataSetChanged")
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     users_models.clear();
                     for(DataSnapshot snapshot :dataSnapshot.getChildren()){
-                        users_uids.add(snapshot.getKey());
-                        users_models.add(snapshot.child(users_uids.get(i)).getValue(users_model.class));
+                        if(!Objects.equals(snapshot.getKey(), "0o8pHc0N1qS3FRZHy2UfD4z1HO82")){
+                            users_uids.add(snapshot.getKey());
+                            users_models.add(snapshot.child(users_uids.get(i)).getValue(users_model.class));
 
-                        i++;
+                            i++;
+                        }
                     }
                     notifyDataSetChanged();
                     for(int k = 0;k < users_uids.size(); k++){
@@ -121,8 +129,22 @@ public class community_user extends Fragment {
                     Uid = dataSnapshot.child(users_uids.get(position)).child("Uid").getValue(String.class);
                     Glide.with(holder.itemView.getContext())
                             .load(Profile).apply(new RequestOptions().circleCrop()).into(((CustomViewHolder) holder).imageView);
-                    //((CustomViewHolder)holder).textView.setText(users_models.get(position).usernm);
                     ((CustomViewHolder) holder).textView.setText(Nickname);
+                    /*
+                    holder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view){
+                            Intent intent = new Intent(view.getContext(), community_message.class);
+                            intent.putExtra("destinationUid", users_uids.get(position));
+                            ActivityOptions activityOptions = null;
+                            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+                                activityOptions = ActivityOptions.makeCustomAnimation(view.getContext(), R.anim.fromleft, R.anim.fromleft);
+                                startActivity(intent, activityOptions.toBundle());
+                            }
+                        }
+                    });
+
+                     */
                 }
 
                 @Override
@@ -130,11 +152,7 @@ public class community_user extends Fragment {
 
                 }
             });
-
-            //Picasso.get().load(users_models.get(position).userphoto).into(((CustomViewHolder)holder).imageView);
-            //Picasso.get().load("https://mblogthumb-phinf.pstatic.net/20150417_264/ninevincent_14291992723052lDb3_JPEG/kakao_11.jpg?type=w2").into(((CustomViewHolder)holder).imageView);
-            //Glide.with(holder.itemView.getContext()).load(users_models.get(position).userphoto).apply(new RequestOptions().circleCrop()).into(((CustomViewHolder)holder).imageView);
-        }
+}
         @Override
         public int getItemCount(){
             return users_models.size();

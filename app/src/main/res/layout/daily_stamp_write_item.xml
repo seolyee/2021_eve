@@ -44,7 +44,7 @@
                             android:layout_height="wrap_content"
                             android:text="제목"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textSize="16dp" />
+                            android:textSize="23dp" />
 
                         <TextView
                             android:id="@+id/tv_date"
@@ -61,7 +61,8 @@
             <RelativeLayout
                 android:id="@+id/rl_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
 
                 <ImageView
                     android:id="@+id/iv_image"
@@ -98,31 +99,31 @@
                 android:background="#ddd"
                 android:orientation="horizontal">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginBottom="1dp"
-                    android:background="#fff"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:layout_marginBottom="1dp"-->
+<!--                    android:background="#fff"-->
+<!--                    android:paddingLeft="16dp"-->
+<!--                    android:paddingRight="16dp">-->
 
-                    <ImageView
-                        android:id="@+id/iv_profile"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_centerVertical="true"
-                        android:src="@color/blue" />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/iv_profile"-->
+<!--                        android:layout_width="15dp"-->
+<!--                        android:layout_height="15dp"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:src="@color/blue" />-->
 
-                    <TextView
-                        android:id="@+id/tv_author"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="5dp"
-                        android:layout_toRightOf="@+id/iv_profile"
-                        android:text="작성자"
-                        android:textAppearance="?android:attr/textAppearanceSmall" />
-                </RelativeLayout>
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_author"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:layout_marginLeft="5dp"-->
+<!--                        android:text="작성자"-->
+<!--                        android:textAppearance="?android:attr/textAppearanceSmall" />-->
+<!--                -->
+<!--                </RelativeLayout>-->
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

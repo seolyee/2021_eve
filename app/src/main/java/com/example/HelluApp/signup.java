@@ -11,8 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.HelluApp.Community.users_model;
-import com.example.HelluApp.MainFragment.fragment_mypage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -56,13 +54,15 @@ public class signup extends AppCompatActivity {
         rDatabase = FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
 
+
         if(firebaseAuth.getCurrentUser() != null){
             //이미 로그인 되었다면 이 액티비티를 종료함
-            //finish();
+            finish();
             //그리고 MainActivity를 연다.
-            //startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
 
+        
         signup_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

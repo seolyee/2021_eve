@@ -6,11 +6,9 @@ import androidx.loader.content.CursorLoader;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -35,7 +33,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -59,12 +56,17 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
     String Title;
     String Content;
     String Image_path;
+    String filename;
+    String Kcal;
+    String Kcal_today;
 
     Button save_button;         //매일인증 저장하기 버튼
     Button gallery;             //갤러리 열기 버튼
 
     RecyclerView daily_recyclerview;
     ImageView daily_imageView;
+    TextView tv_recommended_kcal;
+    TextView tv_today_kcal;
     int CODE_ALBUM_REQUEST = 111;
 
     @Override
@@ -162,7 +164,7 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
             //Unique한 파일명을 만들자.
             SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMHH_mmss");
             Date now = new Date();
-            String filename = formatter.format(now) + ".png";
+            filename = formatter.format(now) + ".jpg";
             //storage 주소와 폴더 파일명을 지정해 준다.
             StorageReference storageRef = storage.getReferenceFromUrl("gs://eveproject-d838a.appspot.com").child("daily_stamp/" + filename);
 
@@ -203,6 +205,12 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
         //내용
         EditText optionContent = findViewById(R.id.daily_write_content);
 
+        //칼로리
+        EditText optionKcal = findViewById(R.id.daily_write_kcal);
+
+        tv_recommended_kcal = findViewById(R.id.recommended_kcal_textview);
+        tv_today_kcal = findViewById(R.id.today_kcal_textview);
+
         //제목 입력
         if (optionTitle != null) {
             Title = optionTitle.getText().toString().trim();
@@ -219,6 +227,14 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
             return;
         }
 
+        //칼로리 입력
+        if(optionKcal != null){
+            Kcal = optionKcal.getText().toString().trim();
+        } else {
+            Toast.makeText(this, "칼로리를 입력해주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         String Uid = user.getUid();
         databaseReference.child("User").child(Uid).addListenerForSingleValueEvent(
                 new ValueEventListener() {
@@ -226,14 +242,13 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         // Get user value
                         User user = dataSnapshot.getValue(User.class);
-
                         if (user == null) {
                             // User is null, error out
                             Log.e(TAG, "User " + Uid + " is unexpectedly null");
 
                         } else {
                             // Write new post
-                            writeNewPost(Uid, user.Nickname, Title, Content, Image_path, getDate);
+                            writeNewPost(Uid, user.Nickname, Title, Content, Image_path, getDate, filename, Kcal);
                         }
 
                     }
@@ -246,11 +261,11 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
 
     }
 
-    private void writeNewPost(String Uid, String Nickname, String Title, String Content, String Image_path, String getDate) {
+    private void writeNewPost(String Uid, String Nickname, String Title, String Content, String Image_path, String getDate, String filename, String Kcal) {
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
         String key = databaseReference.child("User_Write").push().getKey();
-        Post post = new Post(Uid, Nickname, Title, Content, Image_path, getDate);
+        Post post = new Post(Uid, Nickname, Title, Content, Image_path, getDate, filename, Kcal);
         Map<String, Object> postValues = post.posttomap();
 
         Map<String, Object> childUpdates = new HashMap<>();
@@ -262,7 +277,6 @@ public class daily_stamp_write<daily_recyclerview> extends AppCompatActivity {
         // realtime Database 들어가면 User_Write는 각 user의 uid로 분류하여 글을 모아둔 곳.
         // User_Write -> 각 user의 Uid -> 글 분류 키값 -> 글 내용
         childUpdates.put("/User_Write/" + Uid + "/" + key, postValues);
-
 
         databaseReference.updateChildren(childUpdates);
     }

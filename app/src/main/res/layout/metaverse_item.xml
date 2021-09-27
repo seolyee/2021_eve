@@ -31,6 +31,7 @@
             android:text="트레이너 선생님 성함" />
 
         <Button
+            android:id="@+id/trainingClassEnterButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="트레이닝 방 입장하기" />
