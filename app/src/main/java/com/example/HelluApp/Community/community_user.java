@@ -45,7 +45,6 @@ import java.util.Objects;
 //친구목록.java
 
 public class community_user extends Fragment {
-    private DatabaseReference rDatabase = FirebaseDatabase.getInstance().getReference("User");
     String Nickname;
     String Email;
     String Profile;

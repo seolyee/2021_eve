@@ -11,35 +11,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        app:cardBackgroundColor="@color/light_gray">
+        app:cardBackgroundColor="#FAFAFA">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="vertical"
-            android:padding="5dp">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:padding="15dp">
+                android:padding="10dp">
 
                 <!--등수-->
-                <TextView
-                    android:id="@+id/rank_num"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1"
-                    android:textSize="25dp" />
 
                 <!--프로필 사진-->
                 <ImageView
                     android:id="@+id/rank_profile"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:src="@mipmap/ic_launcher"/>
 
                 <!--이름-->
@@ -61,9 +53,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
+                    android:id="@+id/rank_num"
                     android:text="km"
-                    android:textSize="25dp" />
+                    android:textSize="15dp" />
 
             </LinearLayout>
         </LinearLayout>

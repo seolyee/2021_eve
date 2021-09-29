@@ -5,6 +5,8 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -47,6 +49,8 @@
         <activity android:name=".DailyStamp.daily_stamp_camera" />
         <activity android:name=".Metaverse.metaverse" />
         <activity android:name=".Walking.walking" />
+        <activity android:name=".Walking.walking_ranking_checking"
+            tools:ignore="DuplicateActivity" />
         <activity android:name=".PlanReview.plan_review" />
         <activity android:name=".plan_choose" />
         <activity android:name=".DailyStamp.daily_stamp" />

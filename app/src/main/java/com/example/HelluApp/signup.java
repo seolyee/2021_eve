@@ -80,7 +80,8 @@ public class signup extends AppCompatActivity {
                                     String Uid = user.getUid();
                                     String Nickname = editTextTextName.getText().toString().trim();
                                     String ProfileUrl = "https://mblogthumb-phinf.pstatic.net/20150417_264/ninevincent_14291992723052lDb3_JPEG/kakao_11.jpg?type=w2";
-                                    User user1 = new User(Nickname, Email, Uid, ProfileUrl);
+                                    String Walking = "0";
+                                    User user1 = new User(Nickname, Email, Uid, ProfileUrl, Walking);
                                     HashMap<String, Object> user_data = user1.usertomap();
 
                                     /*
