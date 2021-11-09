@@ -18,3 +18,24 @@
 　: 개인에게 맞는 다이어트 및 건강관리 플랜을 짜주는 AI<br><br>
 ・랭킹<br>
 　: 걷기 운동 걸음 수 랭킹을 집계하고 통계해 사용자간의 긍정적인 경쟁 유발<br>
+ <br></br>
+ <h2>개발 환경</h2>
+・Android Studio(4.2.2)<br>
+・안드로이드 OS(10.0.1)<br>
+・Naver Cloud Platform AI server<br>
+・Firebase<br>
+ <br></br>
+ <h2>기대 효과</h2>
+・Application을 통한 Community 기반의 비대면 헬스 케어 활성화 예상<br><br>
+・개인 목표 달성을 통해 다이어트 접근 용이 및 건강 관리 가능<br><br>
+・E스포츠 시장과 커넥팅을 통한 수익 창출 기대<br><br>
+・비만 인구 증가에 따른 국가사업과 연계<br><br>
+・헬스 관련 전문가의 일자리 창출 가능<br><br>
+・O2O 서비스 (피트니스 센터와의 연계 가능)<br>
+　: 편리한 건강 관리 서비스를 트레이너 중심으로 제공함으로 인해 회원 유지 가능<br><br>
+ <hr>
+ <h2>실행 화면</h2>
+ <img width="80%" src="https://user-images.githubusercontent.com/60960108/140947493-34e15aa4-d8bd-4a8a-971d-c58c2b9637ad.png"/>
+
+
+ 
